@@ -1,25 +1,31 @@
 const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
 
-const audioMap = {};
+// Create and append audio elements to the body
 sounds.forEach(sound => {
-  audioMap[sound] = new Audio(`./sounds/${sound}.mp3`);
+  const audio = document.createElement('audio');
+  audio.src = `./sounds/${sound}.mp3`;
+  audio.id = sound;
+  document.body.appendChild(audio);
 });
 
+// Add event listeners for play
+sounds.forEach(sound => {
+  const btn = document.getElementById(sound);
+  btn.addEventListener('click', () => {
+    stopSounds();
+    const audio = document.getElementById(sound);
+    audio.play();
+  });
+});
+
+// Stop button
+document.getElementById('stop').addEventListener('click', stopSounds);
+
+// Function to stop all sounds
 function stopSounds() {
   sounds.forEach(sound => {
-    const audio = audioMap[sound];
+    const audio = document.getElementById(sound);
     audio.pause();
     audio.currentTime = 0;
   });
 }
-
-sounds.forEach(sound => {
-  const button = document.getElementById(sound);
-  button.addEventListener('click', () => {
-    stopSounds(); 
-    audioMap[sound].play();
-  });
-});
-
-// Stop button event listener
-document.getElementById('stop').addEventListener('click', stopSounds);

@@ -1,11 +1,11 @@
 body {
   height: 100vh;
   width: 100vw;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f4f4f4;
-  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
 }
 
 #buttons {
@@ -15,17 +15,15 @@ body {
   gap: 15px;
 }
 
-.btn, .stop {
-  padding: 10px 20px;
+.btn {
+  padding: 12px 20px;
   background-color: purple;
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-.btn:hover, .stop:hover {
-  background-color: darkmagenta;
+.stop {
+  background-color: crimson;
 }
